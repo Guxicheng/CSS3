@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            padding: 30px;
+        }
+        
+        #css3-content {
+            display: flex;
+        }
+        
+        #css3-contentLeft {
+            width: 60%;
+            border-right: 1px solid #ccc;
+        }
+        
+        #css3-contentRight {
+            width: 40%;
+            padding-left: 15px;
+        }
+        
+        input {
+            padding: 9px 15px;
+            background: #67C23A;
+            font-size: 12px;
+            border-radius: 3px;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        
+        #css3 {
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+            margin-top: 80px;
+            text-align: center;
+        }
+        
+        #css3 p {
+            line-height: 200px;
+        }
+        
+        @keyframes myAnimation {
+            0% {
+                background: red;
+                left: 0px;
+                top: 0px;
+            }
+            25% {
+                background: yellow;
+                left: 200px;
+                top: 0px;
+            }
+            50% {
+                background: blue;
+                left: 200px;
+                top: 200px;
+            }
+            75% {
+                background: green;
+                left: 0px;
+                top: 200px;
+            }
+            100% {
+                background: red;
+                left: 0px;
+                top: 0px;
+            }
+        }
+        
+        #newspaper {
+            display: none;
+        }
+        
+        #buttons {
+            display: none;
+            margin: 10px 0px;
+        }
+        
+        #media-content {
+            width: 100%;
+            height: 200px;
+            background-color: pink;
+            margin: 10px 0px;
+            display: none;
+        }
+        
+        @media screen and (max-width: 600px) {
+            #media-content {
+                background-color: lightgreen;
+            }
+        }
+        
+        #grid-container {
+            margin: 10px 0px;
+            width: 100%;
+            display: none;
+            grid: 'header header header header header header' 'menu main main main right right' 'menu footer footer footer footer footer';
+            grid-gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+        
+        #grid-container>div {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 10px 0;
+            font-size: 30px;
+        }
+        
+        .item1 {
+            grid-area: header;
+        }
+        
+        .item2 {
+            grid-area: menu;
+        }
+        
+        .item3 {
+            grid-area: main;
+        }
+        
+        .item4 {
+            grid-area: right;
+        }
+        
+        .item5 {
+            grid-area: footer;
+        }
+        
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        
+        .button2 {
+            background-color: #008CBA;
+        }
+        
+        .button3 {
+            background-color: #f44336;
+        }
+        
+        .button4 {
+            background-color: #e7e7e7;
+            color: black;
+        }
+        
+        .button5 {
+            background-color: #555555;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="css3-content">
+        <div id="css3-contentLeft">
+            <h1>CSS3</h1>
+            <input type="submit" value="还原" id="reload" onclick="window.location.reload()" /><br/>
+            <input type="submit" value="border-radius" title="圆角(50%)" id="border-radius" onclick="changeBorderRadius()" />
+            <input type="submit" value="background-image" title="背景" id="background-image" onclick="changeBackgroundImage()" />
+            <input type="submit" value="linear-gradient" title="线性渐变" id="linear-gradient" onclick="changeLinearGradient()" />
+            <input type="submit" value="radial-gradient" title="径向渐变" id="radial-gradient" onclick="changeRadialGradient()" />
+            <input type="submit" value="text-shadow" title="文字阴影" id="text-shadow" onclick="changeTextShadow()" />
+            <input type="submit" value="box-shadow" title="盒子阴影" id="box-shadow" onclick="changeBoxShadow()" />
+            <br/>
+            <input type="submit" value="font-family" title="字体名称(Times New Roman)" id="font-family" onclick="changeFontFamily()" />
+            <input type="submit" value="font-style" title="字体样式(italic)" id="font-style" onclick="changeFontStyle()" />
+            <input type="submit" value="font-weight" title="字体粗细(bold)" id="font-weight" onclick="changeFontWeight()" />
+            <br/>
+            <input type="submit" value="translate" title="移动" id="translate" onclick="changeTranslate()" />
+            <input type="submit" value="rotate" title="旋转" id="rotate" onclick="changeRotate()" />
+            <input type="submit" value="scale" title="放大/缩小" id="scale" onclick="changeScale()" />
+            <input type="submit" value="skew" title="倾斜" id="skew" onclick="changeSkew()" />
+            <input type="submit" value="matrix" title="2D变换合并" id="matrix" onclick="changeMatrix()" />
+            <br/>
+            <input type="submit" value="transition" title="过渡" id="transition" onclick="changeTransition()" />
+            <input type="submit" value="animation" title="动画" id="animation" onclick="changeAnimation()" />
+            <br/>
+            <input type="submit" value="column" title="多列" id="column" onclick="changeColumn()" />
+            <input type="submit" value="button" title="按钮" id="button" onclick="changeButton()" />
+            <input type="submit" value="flex" title="弹性盒子" id="flex" onclick="changeFlex()" />
+            <br/>
+            <input type="submit" value="media" title="媒体查询" id="media" onclick="changeMedia()" />
+            <input type="submit" value="grid" title="网格布局" id="grid" onclick="changeGrid()" />
+            <div id="css3">
+                <p>Lucky Star</p>
+            </div>
+        </div>
+        <div id="css3-contentRight">
+            <div id="newspaper">
+                人生，无所谓失去，只怕草率地挥霍。生命有限，所有得到，最后终会失去。只要用心珍惜过，就不必太在意失去。花开花谢，四时更替，该走的谁也无法挽留，该来的谁也阻止不了。放开怀抱，坦然面对，以喜悦之心迎接每一个清晨，以淡然之心送走每一个黄昏。不亵渎生命，就能最大限度迟滞失去。
+            </div>
+            <div id="buttons">
+                <button class="button">Green</button>
+                <button class="button button2">Blue</button>
+                <button class="button button3">Red</button>
+                <button class="button button4">Gray</button>
+                <button class="button button5">Black</button>
+            </div>
+            <div id="media-content">
+                <h1>缩小浏览器窗口查看!</h1>
+            </div>
+            <div id="grid-container">
+                <div class="item1">头部</div>
+                <div class="item2">菜单</div>
+                <div class="item3">主要内容区域</div>
+                <div class="item4">右侧</div>
+                <div class="item5">底部</div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script>
+        var Css3 = document.getElementById('css3');
+        var Newspaper = document.getElementById('newspaper');
+        var Buttons = document.getElementById('buttons');
+        var Button = document.getElementsByClassName('button');
+        var mediaContent = document.getElementById('media-content');
+        var gridContent = document.getElementById('grid-container');
+
+        function changeBorderRadius() {
+            Css3.style.borderRadius = '50%';
+        }
+
+        function changeBackgroundImage() {
+            Css3.style.backgroundImage = "url('./image/1.png')";
+            Css3.style.backgroundRepeat = 'no-repeat';
+            Css3.style.backgroundSize = "100% 100%";
+        }
+
+        function changeLinearGradient() {
+            Css3.style.backgroundImage = 'linear-gradient(#e66465, #9198e5)';
+        }
+
+        function changeRadialGradient() {
+            Css3.style.backgroundImage = 'radial-gradient(#e66465, #9198e5)';
+        }
+
+        function changeTextShadow() {
+            Css3.style.textShadow = '5px 5px 5px #FF0000';
+        }
+
+        function changeBoxShadow() {
+            Css3.style.boxShadow = '10px 10px 5px #888888';
+        }
+
+        function changeFontFamily() {
+            Css3.style.fontFamily = 'Times New Roman';
+        }
+
+        function changeFontStyle() {
+            Css3.style.fontStyle = 'italic';
+        }
+
+        function changeFontWeight() {
+            Css3.style.fontWeight = 'bold';
+        }
+
+        function changeTranslate() {
+            Css3.style.transform = 'translate(50px,100px)';
+        }
+
+        function changeRotate() {
+            Css3.style.transform = 'rotate(30deg)';
+        }
+
+        function changeScale() {
+            Css3.style.transform = 'scale(1.1)';
+        }
+
+        function changeSkew() {
+            Css3.style.transform = 'skew(30deg,20deg)';
+        }
+
+        function changeMatrix() {
+            Css3.style.transform = 'matrix(0.866,0.5,-0.5,0.866,0,0)';
+        }
+
+        function changeTransition() {
+            Css3.style.width = '300px';
+            Css3.style.height = '300px';
+            Css3.style.transform = 'rotate(360deg)';
+            Css3.style.transition = 'width 2s, height 2s, transform 2s';
+        }
+
+        function changeAnimation() {
+            Css3.style.position = 'relative';
+            Css3.style.animation = 'myAnimation 5s';
+        }
+
+        function changeColumn() {
+            Newspaper.style.display = 'block';
+            Newspaper.style.columnCount = '3';
+            Newspaper.style.columnGap = '40px';
+            Newspaper.style.columnRuleStyle = 'outset';
+            Newspaper.style.columnRuleWidth = '1px';
+        }
+
+        function changeButton() {
+            Buttons.style.display = 'block';
+        }
+
+        function changeFlex() {
+            window.open('https://github.com/Guxicheng/Flex', '_blank')
+        }
+
+        function changeMedia() {
+            mediaContent.style.display = 'block';
+
+        }
+
+        function changeGrid() {
+            gridContent.style.display = 'grid';
+        }
+    </script>
+</body>
+
+</html>
